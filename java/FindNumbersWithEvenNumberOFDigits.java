@@ -16,5 +16,4 @@ class FindNumbersWithEvenNumberOFDigits {
     return result;
 }
 
-
 }
