@@ -1,6 +1,9 @@
 public class DesignLinkedList {
 
 
+  public static void main(String[] args) {
+    
+  }
 
 
 }
