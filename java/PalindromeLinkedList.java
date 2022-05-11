@@ -1,31 +1,75 @@
 class PalindromeLinkedList {
 
-  
+  public boolean isPalindrome(ListNode head) {      
+    ListNode firstHalf = endOfFirstHalf(head);
+    ListNode secondHalf = reverse(firstHalf.next);
+    firstHalf.next = secondHalf;
+    ListNode current1 = head;
+    ListNode current2 = secondHalf;
 
-  
-// recursive 
-
-private ListNode current;
-    
-public boolean isPalindrome(ListNode head) { 
-    
-    current = head;
-    return reversedLinkedList(head); 
+    while(current1 != firstHalf.next && current2 != null) {
+        if(current1.val != current2.val) {
+            return false;
+        }
+        current1 = current1.next;
+        current2 = current2.next;
+    }         
+    return true;
     
 }
 
-public boolean reversedLinkedList(ListNode head) {
-   if(head == null) {
-       return true;
+public ListNode reverse(ListNode head) {
+   ListNode prev = null;
+   ListNode current = head;
+   while(current != null) {   
+       head = current;
+       ListNode nextNode = current.next;
+       current.next = prev;
+       prev = current;
+       current = nextNode;
    }
-   boolean result = reversedLinkedList(head.next);
-
-   if(current.val != head.val) {
-       return false;
-   }        
-   current = current.next;
-   return result;
+   return head;
 }
+
+public ListNode endOfFirstHalf(ListNode head) {
+   ListNode fast = head;
+   ListNode slow = head;
+   
+   while(fast.next != null && fast.next.next != null) {
+       slow = slow.next;
+       fast = fast.next.next;
+   }
+   
+   return slow;
+}
+
+
+// space O(1) solution
+
+
+
+
+  // recursive 
+
+// private ListNode current;
+    
+// public boolean isPalindrome(ListNode head) { 
+//     current = head;
+//     return reversedLinkedList(head); 
+// }
+
+// public boolean reversedLinkedList(ListNode head) {
+//    if(head == null) {
+//        return true;
+//    }
+//    boolean result = reversedLinkedList(head.next);
+
+//    if(current.val != head.val) {
+//        return false;
+//    }        
+//    current = current.next;
+//    return result;
+// }
 
 
 
