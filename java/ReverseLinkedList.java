@@ -3,11 +3,16 @@ class ReverseLinkedList {
 
 
   public recursiveReverseList(ListNode head) {
+    if(head == null || head.next == null) {
+      return null;
+    }
 
-    
+    ListNode result = recursiveReverseList(head.next);
 
+    head.next.next = head;
 
-
+    head.next = null;
+    return result;
 
   }
 
