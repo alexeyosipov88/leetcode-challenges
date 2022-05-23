@@ -40,3 +40,50 @@ class BinaryTreeLevelOrderTraversal {
       
   }
 }
+
+
+
+// recursive
+
+// class Solution {
+//     List<List<Integer>> result = new ArrayList<>();
+
+//     public void helper(TreeNode root, int level) {
+        
+//         if(root == null) return;
+        
+//         if(result.size() == level) {
+            
+//             result.add(new ArrayList<Integer>());
+            
+//         }
+        
+//         result.get(level).add(root.val);
+        
+        
+//         if(root.left != null) {
+//             helper(root.left, level + 1);
+//         }
+        
+//         if(root.right != null) {
+//             helper(root.right, level + 1);
+//         }
+        
+        
+        
+//     }
+    
+//     public List<List<Integer>> levelOrder(TreeNode root) {
+        
+        
+        
+        
+//         helper(root, 0);
+        
+//         return result;
+        
+        
+
+        
+//     }
+// }
