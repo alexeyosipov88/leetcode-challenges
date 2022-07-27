@@ -2,48 +2,35 @@
  * @param {string} s
  * @return {number}
  */
+
+
+
+// BRUTAL FORCE
+
  var lengthOfLongestSubstring = function(s) {
     let result = 0;
 
     for(let i = 0; i < s.length; i++) {
-        let currSubString = "";
         for(let j = i; j < s.length; j++) {
-            currSubString += s[j];
-            if(checkRepetition(currSubString)) {
-                currSubString = "";
-                break;
+            if(!checkRepetition(s, i, j)) {
+                result = Math.max((j - i) + 1, result);
             }    
-            result = Math.max(currSubString.length - 1, result);
         }
-        
     }
-    
-    
     return result;
-    
 };
 
 
-function checkRepetition(str) {
+function checkRepetition(str, first, last) {
     const hash = [];
-    for(let i = 0; i < str.length; i++) {
-    
-        
+    for(let i = first; i <= last; i++) {        
         if(!hash[str.charCodeAt(i)]) {
             hash[str.charCodeAt(i)] = 0;
         }
-
         hash[str.charCodeAt(i)]++;
-        
-        
         if(hash[str.charCodeAt(i)] > 1) {
-            
             return true;
-            
         }
-        
     }
-    
     return false;
-    
 }
